@@ -5,6 +5,22 @@ All notable changes to the **BloumeChat RPC** extension are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2026-05-29
+
+### Added
+- **Status bar control**: a clickable BloumeChat RPC item to **Start / Reconnect / Stop** broadcasting, plus commands `BloumeChat RPC: Start | Stop | Reconnect`.
+- **Auto-start**: the extension now connects automatically on launch when `enabled` is `true`.
+- New display options, configurable like Discord rich presence:
+  - `showFileType` (default on) — file-type / language icon for the current file.
+  - `showLineNumber` (default off) — current cursor position (line:column).
+  - `showProblems` (default off) — number of problems (errors + warnings) in the workspace.
+
+### Changed
+- The activity now **persists when VS Code loses focus** (e.g. when you switch to another application) instead of being cleared.
+
+### Removed
+- **`bloumechatRpc.serverUrl`** — the realtime endpoint is now hardcoded to `wss://api.bloumechat.com` and is no longer user-configurable.
+
 ## [1.0.4] - 2026-05-28
 
 ### Added
