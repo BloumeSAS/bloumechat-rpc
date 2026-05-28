@@ -2,16 +2,22 @@
   "name": "bloumechat-rpc",
   "displayName": "BloumeChat RPC",
   "description": "Show your VS Code activity on BloumeChat",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "BloumeChat",
   "license": "UNLICENSED",
   "repository": {
     "type": "git",
     "url": "https://github.com/bloumechat/bloumechat-rpc"
   },
-  "engines": { "vscode": "^1.85.0" },
-  "categories": ["Other"],
-  "activationEvents": ["onStartupFinished"],
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
   "main": "./out/extension.js",
   "contributes": {
     "configuration": {
