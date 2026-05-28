@@ -1,0 +1,61 @@
+{
+  "name": "bloumechat-rpc",
+  "displayName": "BloumeChat RPC",
+  "description": "Show your VS Code activity on BloumeChat",
+  "version": "1.0.0",
+  "publisher": "BloumeChat",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bloumechat/bloumechat-rpc"
+  },
+  "engines": { "vscode": "^1.85.0" },
+  "categories": ["Other"],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "BloumeChat RPC",
+      "properties": {
+        "bloumechatRpc.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable BloumeChat Rich Presence"
+        },
+        "bloumechatRpc.serverUrl": {
+          "type": "string",
+          "default": "wss://bloumechat.com",
+          "description": "BloumeChat server WebSocket URL"
+        },
+        "bloumechatRpc.token": {
+          "type": "string",
+          "default": "",
+          "description": "Your BloumeChat RPC token (Settings > Desktop > Token RPC)"
+        },
+        "bloumechatRpc.showFileName": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show the current file name in your activity"
+        },
+        "bloumechatRpc.showWorkspace": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show the workspace/project name in your activity"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "npm run compile && vsce package"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@vscode/vsce": "^2.24.0",
+    "typescript": "^5.3.0"
+  },
+  "dependencies": {
+    "socket.io-client": "^4.7.4"
+  }
+}
