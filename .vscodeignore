@@ -9,3 +9,5 @@ tsconfig.json
 **/*.ts
 **/*.map
 package-lock.json
+CLAUDE.md
+*.vsix
