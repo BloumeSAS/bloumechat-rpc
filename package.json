@@ -2,7 +2,7 @@
   "name": "bloumechat-rpc",
   "displayName": "BloumeChat RPC",
   "description": "Show your VS Code activity on BloumeChat",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "publisher": "BloumeChat",
   "license": "UNLICENSED",
   "repository": {
