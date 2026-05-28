@@ -6,11 +6,11 @@
 
 **Show your Visual Studio Code activity on [BloumeChat](https://bloumechat.com) — in real time.**
 
-[![Version](https://img.shields.io/badge/version-1.0.0-6366f1?style=flat-square)](https://github.com/bloumechat/bloumechat-rpc/releases)
+[![Version](https://img.shields.io/badge/version-1.0.4-6366f1?style=flat-square)](https://github.com/BloumeSAS/bloumechat-rpc/releases)
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.85%2B-007ACC?style=flat-square&logo=visualstudiocode)](https://marketplace.visualstudio.com/items?itemName=BloumeChat.bloumechat-rpc)
 [![License](https://img.shields.io/badge/license-Proprietary-ef4444?style=flat-square)](#-license)
 [![Made by Bloume.Fr](https://img.shields.io/badge/made%20by-Bloume.Fr-a855f7?style=flat-square)](https://bloume.fr)
-[![Build](https://img.shields.io/github/actions/workflow/status/bloumechat/bloumechat-rpc/release.yml?style=flat-square&label=CI)](https://github.com/bloumechat/bloumechat-rpc/actions)
+[![Build](https://img.shields.io/github/actions/workflow/status/BloumeSAS/bloumechat-rpc/release.yml?style=flat-square&label=CI)](https://github.com/BloumeSAS/bloumechat-rpc/actions)
 
 ---
 

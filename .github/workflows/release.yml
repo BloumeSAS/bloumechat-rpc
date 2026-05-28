@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    env:
+      VSCE_PAT: ${{ secrets.VSCE_PAT }}
 
     steps:
       - name: Checkout
@@ -23,11 +25,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Compile TypeScript
-        run: npm run compile
+      - name: Type check
+        run: npm run type-check
 
       - name: Package extension
-        run: npx vsce package --no-dependencies
+        run: npx @vscode/vsce package --no-dependencies
 
       - name: Upload VSIX artifact
         uses: actions/upload-artifact@v4
@@ -40,3 +42,7 @@ jobs:
         with:
           files: "*.vsix"
           generate_release_notes: true
+
+      - name: Publish to Visual Studio Marketplace
+        if: ${{ env.VSCE_PAT != '' }}
+        run: npx @vscode/vsce publish --no-dependencies --pat "$VSCE_PAT"

@@ -1,6 +1,11 @@
-src/
+.github/**
+.vscode/**
+src/**
+node_modules/**
+esbuild.js
 tsconfig.json
-.github/
+.gitignore
 .eslintrc*
-*.map
-node_modules/
+**/*.ts
+**/*.map
+package-lock.json
