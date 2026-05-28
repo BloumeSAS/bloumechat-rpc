@@ -72,15 +72,17 @@ Open VS Code settings (`Ctrl+,`) and search for **BloumeChat RPC**, or edit `set
   // Required — your personal RPC token from BloumeChat Settings > Desktop
   "bloumechatRpc.token": "your_token_here",
 
-  // Optional — all true by default
+  // Optional — enabled + the first three are true by default
   "bloumechatRpc.enabled": true,
   "bloumechatRpc.showFileName": true,
   "bloumechatRpc.showWorkspace": true,
-
-  // Optional — only change this if you run your own BloumeChat instance
-  "bloumechatRpc.serverUrl": "wss://bloumechat.com"
+  "bloumechatRpc.showFileType": true,
+  "bloumechatRpc.showLineNumber": false,
+  "bloumechatRpc.showProblems": false
 }
 ```
+
+> The realtime endpoint is fixed to `wss://api.bloumechat.com` and is **not** configurable.
 
 That's it. Your BloumeChat profile now shows **Visual Studio Code** as your current activity. 🎉
 
@@ -90,11 +92,19 @@ That's it. Your BloumeChat profile now shows **Visual Studio Code** as your curr
 
 | Setting | Type | Default | Description |
 |---|---|---|---|
-| `bloumechatRpc.enabled` | `boolean` | `true` | Master toggle for the extension |
+| `bloumechatRpc.enabled` | `boolean` | `true` | Master toggle (auto-starts when VS Code launches) |
 | `bloumechatRpc.token` | `string` | `""` | Your BloumeChat RPC token |
-| `bloumechatRpc.serverUrl` | `string` | `wss://bloumechat.com` | WebSocket server URL |
 | `bloumechatRpc.showFileName` | `boolean` | `true` | Include current file name in activity |
 | `bloumechatRpc.showWorkspace` | `boolean` | `true` | Include workspace/project name in activity |
+| `bloumechatRpc.showFileType` | `boolean` | `true` | Show the file-type / language icon for the current file |
+| `bloumechatRpc.showLineNumber` | `boolean` | `false` | Show the cursor position (line:column) |
+| `bloumechatRpc.showProblems` | `boolean` | `false` | Show the number of problems (errors + warnings) |
+
+> ℹ️ The WebSocket endpoint is hardcoded to `wss://api.bloumechat.com` and cannot be changed.
+
+### Status bar control
+
+A **BloumeChat RPC** item lives in the status bar. Click it to **Start**, **Reconnect**, or **Stop** broadcasting at any time. The extension auto-starts on launch when `enabled` is `true`.
 
 ---
 
