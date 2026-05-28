@@ -55,7 +55,7 @@ export function activate(context: vscode.ExtensionContext): void {
         scheduleUpdate();
     });
 
-    const onConfigChange = vscode.workspace.onDidChangeConfiguration((e) => {
+    const onConfigChange = vscode.workspace.onDidChangeConfiguration((e: vscode.ConfigurationChangeEvent) => {
         if (e.affectsConfiguration("bloumechatRpc")) {
             initClient();
         }
