@@ -2,7 +2,7 @@
   "name": "bloumechat-rpc",
   "displayName": "BloumeChat RPC",
   "description": "Show your VS Code activity on BloumeChat",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "publisher": "BloumeChat",
   "license": "UNLICENSED",
   "repository": {
@@ -54,7 +54,8 @@
   "scripts": {
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
-    "package": "npm run compile && vsce package"
+    "package": "npm run compile && vsce package",
+    "type-check": "tsc --noEmit"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
