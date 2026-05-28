@@ -2,7 +2,7 @@
   "name": "bloumechat-rpc",
   "displayName": "BloumeChat RPC",
   "description": "Show your Visual Studio Code activity on BloumeChat in real time.",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "publisher": "BloumeSAS",
   "license": "SEE LICENSE IN LICENSE",
   "icon": "icon.png",
@@ -43,18 +43,35 @@
   ],
   "main": "./out/extension.js",
   "contributes": {
+    "commands": [
+      {
+        "command": "bloumechatRpc.control",
+        "title": "BloumeChat RPC: Start / Reconnect / Stop",
+        "category": "BloumeChat RPC"
+      },
+      {
+        "command": "bloumechatRpc.start",
+        "title": "BloumeChat RPC: Start",
+        "category": "BloumeChat RPC"
+      },
+      {
+        "command": "bloumechatRpc.stop",
+        "title": "BloumeChat RPC: Stop",
+        "category": "BloumeChat RPC"
+      },
+      {
+        "command": "bloumechatRpc.reconnect",
+        "title": "BloumeChat RPC: Reconnect",
+        "category": "BloumeChat RPC"
+      }
+    ],
     "configuration": {
       "title": "BloumeChat RPC",
       "properties": {
         "bloumechatRpc.enabled": {
           "type": "boolean",
           "default": true,
-          "description": "Enable BloumeChat Rich Presence"
-        },
-        "bloumechatRpc.serverUrl": {
-          "type": "string",
-          "default": "wss://bloumechat.com",
-          "description": "BloumeChat server WebSocket URL"
+          "description": "Enable BloumeChat Rich Presence (auto-starts when VS Code launches)"
         },
         "bloumechatRpc.token": {
           "type": "string",
@@ -64,12 +81,27 @@
         "bloumechatRpc.showFileName": {
           "type": "boolean",
           "default": true,
-          "description": "Show the current file name in your activity"
+          "markdownDescription": "Show the current **file name** in your activity"
         },
         "bloumechatRpc.showWorkspace": {
           "type": "boolean",
           "default": true,
-          "description": "Show the workspace/project name in your activity"
+          "markdownDescription": "Show the **workspace / project name** in your activity"
+        },
+        "bloumechatRpc.showFileType": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Show the **file type / language** icon for the file you're editing"
+        },
+        "bloumechatRpc.showLineNumber": {
+          "type": "boolean",
+          "default": false,
+          "markdownDescription": "Show the current **cursor position** (line:column) in your activity"
+        },
+        "bloumechatRpc.showProblems": {
+          "type": "boolean",
+          "default": false,
+          "markdownDescription": "Show the number of **problems** (errors + warnings) in your workspace"
         }
       }
     }
