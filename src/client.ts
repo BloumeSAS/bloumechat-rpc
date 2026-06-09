@@ -3,8 +3,8 @@ import type { RpcActivityPayload } from "./activity";
 
 /** Fixed BloumeChat realtime endpoint. NOT user-configurable. */
 const SERVER_URL = "wss://api.bloumechat.com";
-const MAX_RETRIES = 5;
 const BASE_DELAY_MS = 3000;
+const MAX_DELAY_MS = 30_000;
 
 export type RpcStatus = "connecting" | "connected" | "disconnected";
 
@@ -54,9 +54,11 @@ export class BloumeRpcClient {
     }
 
     private scheduleReconnect(): void {
-        if (this.destroyed || this.retryCount >= MAX_RETRIES) return;
+        if (this.destroyed) return;
         this.retryCount++;
-        const delay = BASE_DELAY_MS * Math.pow(2, this.retryCount - 1);
+        // Exponential backoff capped at MAX_DELAY_MS — no retry limit, keeps
+        // trying forever until the user explicitly stops the extension.
+        const delay = Math.min(BASE_DELAY_MS * Math.pow(2, this.retryCount - 1), MAX_DELAY_MS);
         this.onStatus("connecting");
         this.retryTimer = setTimeout(() => {
             if (!this.destroyed) this.connect();
