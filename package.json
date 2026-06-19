@@ -1,8 +1,8 @@
 {
   "name": "bloumechat-rpc",
   "displayName": "BloumeChat RPC",
-  "description": "Show your Visual Studio Code activity on BloumeChat in real time.",
-  "version": "1.1.4",
+  "description": "Show your editor activity (VS Code, Cursor, Windsurf, Antigravity, VSCodium…) on BloumeChat in real time.",
+  "version": "1.2.0",
   "publisher": "BloumeSAS",
   "license": "SEE LICENSE IN LICENSE",
   "icon": "icon.png",
@@ -71,7 +71,7 @@
         "bloumechatRpc.enabled": {
           "type": "boolean",
           "default": true,
-          "description": "Enable BloumeChat Rich Presence (auto-starts when VS Code launches)"
+          "description": "Enable BloumeChat Rich Presence (auto-starts when your editor launches)"
         },
         "bloumechatRpc.token": {
           "type": "string",

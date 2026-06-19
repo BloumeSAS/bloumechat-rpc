@@ -5,6 +5,11 @@ All notable changes to the **BloumeChat RPC** extension are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2026-06-19
+
+### Added
+- **Editor auto-detection**: the extension now reports the real running editor — Cursor, Windsurf, Antigravity, VSCodium, VS Code, etc. — instead of always broadcasting "Visual Studio Code". Detection relies on `vscode.env.appName`, so any current or future VS Code-based fork is picked up automatically with no hardcoded list. BloumeChat now shows the matching logo for each editor.
+
 ## [1.1.3] - 2026-06-09
 
 ### Fixed

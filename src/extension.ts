@@ -126,7 +126,7 @@ async function control(): Promise<void> {
               { label: "$(debug-stop) Stop", description: "Stop broadcasting your activity", action: "stop" },
           ]
         : [
-              { label: "$(play) Start", description: "Start broadcasting your VS Code activity", action: "start" },
+              { label: "$(play) Start", description: `Start broadcasting your ${vscode.env.appName} activity`, action: "start" },
           ];
 
     const pick = await vscode.window.showQuickPick(items, {

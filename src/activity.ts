@@ -7,6 +7,18 @@ export interface RpcActivityPayload {
     startedAt?: number;
 }
 
+/**
+ * Human-readable name of the editor actually running this extension.
+ *
+ * VS Code forks (Cursor, Windsurf, Antigravity, VSCodium…) set their own
+ * product name at build time, so `vscode.env.appName` already returns the
+ * correct branding ("Cursor", "Windsurf", "Antigravity"…) without needing a
+ * hardcoded list — this also means any future fork works automatically.
+ */
+function getEditorName(): string {
+    return vscode.env.appName || "Visual Studio Code";
+}
+
 /** Count the errors + warnings reported across the whole workspace. */
 function countProblems(): number {
     let count = 0;
@@ -24,7 +36,7 @@ function countProblems(): number {
 }
 
 /**
- * Build the activity payload for the current VS Code state.
+ * Build the activity payload for the current editor state.
  *
  * IMPORTANT: the presence is NOT cleared when the window loses focus. Once the
  * user starts the RPC, the activity persists even when switching to another
@@ -42,8 +54,8 @@ export function getCurrentActivity(startedAt: number): RpcActivityPayload {
     const editor = vscode.window.activeTextEditor;
 
     if (!editor) {
-        // No file open → still "using VS Code", just idle.
-        return { type: "using", name: "Visual Studio Code", details: "Idle", startedAt };
+        // No file open → still "using" the editor, just idle.
+        return { type: "using", name: getEditorName(), details: "Idle", startedAt };
     }
 
     const doc = editor.document;
@@ -84,5 +96,5 @@ export function getCurrentActivity(startedAt: number): RpcActivityPayload {
     }
     if (!details) details = "Editing";
 
-    return { type: "using", name: "Visual Studio Code", details, startedAt };
+    return { type: "using", name: getEditorName(), details, startedAt };
 }

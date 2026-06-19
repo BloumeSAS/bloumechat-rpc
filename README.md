@@ -4,9 +4,9 @@
 
 # BloumeChat RPC
 
-**Show your Visual Studio Code activity on [BloumeChat](https://bloumechat.com) — in real time.**
+**Show your code editor activity on [BloumeChat](https://bloumechat.com) — in real time.**
 
-[![Version](https://img.shields.io/badge/version-1.0.4-6366f1?style=flat-square)](https://github.com/BloumeSAS/bloumechat-rpc/releases)
+[![Version](https://img.shields.io/badge/version-1.2.0-6366f1?style=flat-square)](https://github.com/BloumeSAS/bloumechat-rpc/releases)
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.85%2B-007ACC?style=flat-square&logo=visualstudiocode)](https://marketplace.visualstudio.com/items?itemName=BloumeSAS.bloumechat-rpc)
 [![License](https://img.shields.io/badge/license-Proprietary-ef4444?style=flat-square)](#-license)
 [![Made by Bloume.Fr](https://img.shields.io/badge/made%20by-Bloume.Fr-a855f7?style=flat-square)](https://bloume.fr)
@@ -14,7 +14,7 @@
 
 ---
 
-*Let your friends and server members see what you're hacking on — without leaving VS Code.*
+*Let your friends and server members see what you're hacking on — without leaving your editor.*
 
 </div>
 
@@ -29,6 +29,7 @@
 | ⚡ **Instant setup** | One token, one paste — up and running in under 30 seconds |
 | 🔄 **Auto-reconnect** | Seamless reconnection if the connection drops, with exponential backoff |
 | 🎛️ **Granular control** | Toggle file name, workspace name, or the whole feature — individually |
+| 🪪 **Editor-aware** | Auto-detects your real editor and shows its name + logo on BloumeChat — VS Code, Cursor, Windsurf, Antigravity, VSCodium… |
 | 🌐 **Works everywhere** | Compatible with VS Code, VS Code Insiders, and any fork based on Code OSS |
 
 ---
@@ -84,7 +85,7 @@ Open VS Code settings (`Ctrl+,`) and search for **BloumeChat RPC**, or edit `set
 
 > The realtime endpoint is fixed to `wss://api.bloumechat.com` and is **not** configurable.
 
-That's it. Your BloumeChat profile now shows **Visual Studio Code** as your current activity. 🎉
+That's it. Your BloumeChat profile now shows **your editor** (VS Code, Cursor, Windsurf, Antigravity, VSCodium…) as your current activity, with its own name and logo. 🎉
 
 ---
 
@@ -92,7 +93,7 @@ That's it. Your BloumeChat profile now shows **Visual Studio Code** as your curr
 
 | Setting | Type | Default | Description |
 |---|---|---|---|
-| `bloumechatRpc.enabled` | `boolean` | `true` | Master toggle (auto-starts when VS Code launches) |
+| `bloumechatRpc.enabled` | `boolean` | `true` | Master toggle (auto-starts when your editor launches) |
 | `bloumechatRpc.token` | `string` | `""` | Your BloumeChat RPC token |
 | `bloumechatRpc.showFileName` | `boolean` | `true` | Include current file name in activity |
 | `bloumechatRpc.showWorkspace` | `boolean` | `true` | Include workspace/project name in activity |
@@ -120,7 +121,7 @@ A **BloumeChat RPC** item lives in the status bar. Click it to **Start**, **Reco
 ## 📦 How it works
 
 ```
-VS Code (extension)
+Your editor (extension)
       │
       │  Socket.IO (WebSocket)
       │  auth: { rpcToken: "..." }
@@ -128,12 +129,14 @@ VS Code (extension)
 BloumeChat Server
       │
       │  activity:update event
-      │  { type: "using", name: "Visual Studio Code", details: "file.ts — MyProject" }
+      │  { type: "using", name: "Cursor", details: "file.ts — MyProject" }
       ▼
 Your BloumeChat profile ✓
 ```
 
-The extension opens a persistent Socket.IO connection to the BloumeChat server, authenticated via your RPC token. When you switch files or projects, it emits an `activity:update` event with a 5-second debounce to avoid flooding. When VS Code loses focus or is closed, the activity is cleared automatically.
+The `name` field is read from `vscode.env.appName`, so it automatically matches the editor you're actually running — `"Visual Studio Code"`, `"Cursor"`, `"Windsurf"`, `"Antigravity"`, `"VSCodium"`, etc.
+
+The extension opens a persistent Socket.IO connection to the BloumeChat server, authenticated via your RPC token. When you switch files or projects, it emits an `activity:update` event with a 5-second debounce to avoid flooding. When your editor loses focus or is closed, the activity is cleared automatically.
 
 ---
 
